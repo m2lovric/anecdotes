@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
 
-function App() {
+function App(props) {
+  const [selected, setSelected] = useState(0);
+
+  const randomNum = () => {
+    setSelected(Math.floor(Math.random() * 7));
+    console.log(selected);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>{props.anecdotes[selected]}</p>
+      <button onClick={randomNum}>next anecdote</button>
     </div>
   );
 }
